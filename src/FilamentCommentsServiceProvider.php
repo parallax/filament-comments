@@ -61,14 +61,6 @@ class FilamentCommentsServiceProvider extends PackageServiceProvider
             $this->getAssets(),
             $this->getAssetPackageName()
         );
-
-        if (app()->runningInConsole()) {
-            foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
-                $this->publishes([
-                    $file->getRealPath() => base_path("stubs/filament-comments/{$file->getFilename()}"),
-                ], 'filament-comments-stubs');
-            }
-        }
     }
 
     protected function getAssetPackageName(): ?string
