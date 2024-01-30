@@ -30,10 +30,10 @@ You can publish the config file with:
 php artisan vendor:publish --tag="filament-comments-config"
 ```
 
-You can publish the language file with:
+You can publish the language files with:
 
 ```bash
-php artisan vendor:publish --tag="filament-comments-lang"
+php artisan vendor:publish --tag="filament-comments-translations"
 ```
 
 Optionally, you can publish the views using
