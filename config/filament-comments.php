@@ -27,6 +27,23 @@ return [
     'prune_after_days' => 30,
 
     /*
+     * The rich editor toolbar buttons that are available to users.
+     */
+    'toolbar_buttons' => [
+        'blockquote',
+        'bold',
+        'bulletList',
+        'codeBlock',
+        'italic',
+        'link',
+        'orderedList',
+        'redo',
+        'strike',
+        'underline',
+        'undo',
+    ],
+
+    /*
      * The attribute used to display the user's name.
      */
     'user_name_attribute' => 'name',

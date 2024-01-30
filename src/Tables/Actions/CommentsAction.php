@@ -22,7 +22,6 @@ class CommentsAction extends Action
         $this
             ->icon('heroicon-s-chat-bubble-left-right')
             ->label(__('filament-comments::filament-comments.comments'))
-            ->color('gray')
             ->slideOver()
             ->modalContentFooter(fn (Model $record): View => view('filament-comments::component', [
                 'record' => $record,
@@ -31,6 +30,6 @@ class CommentsAction extends Action
             ->modalWidth(MaxWidth::Medium)
             ->modalSubmitAction(false)
             ->modalCancelAction(false)
-            ->visible(fn (): bool => auth()->user()->can('create', FilamentComment::class));
+            ->visible(fn (): bool => auth()->user()->can('viewAny', FilamentComment::class));
     }
 }
