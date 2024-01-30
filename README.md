@@ -1,8 +1,8 @@
 # Filament Comments
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/parallax/filament-comments?style=flat-square)](https://packagist.org/packages/parallax/filament-comments)
-[![Total Downloads](https://img.shields.io/packagist/dt/parallax/filament-comments?style=flat-square)](https://packagist.org/packages/parallax/filament-comments)
 [![Software License](https://img.shields.io/packagist/l/parallax/filament-comments?style=flat-square)](LICENSE.md)
+[![Total Downloads](https://img.shields.io/packagist/dt/parallax/filament-comments?style=flat-square)](https://packagist.org/packages/parallax/filament-comments)
 ![Stars](https://img.shields.io/github/stars/parallax/filament-comments?style=flat-square)
 
 Add comments to your Filament Resources.
