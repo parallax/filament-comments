@@ -1,8 +1,8 @@
 # Filament Comments
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/parallax/filament-comments.svg?style=flat-square)](https://packagist.org/packages/parallax/filament-comments)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/parallax/filament-comments.svg?style=flat-square)](https://packagist.org/packages/parallax/filament-comments)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 Add comments to your Filament Resources.
 
@@ -64,7 +64,7 @@ There are 3 ways of using this plugin in your Filament Resources:
 
 #### 1. Page actions
 
-Open the page where you want the comments action to appear, this will most likely be the `View` resource page.
+Open the page where you want the comments action to appear, this will most likely be the `ViewResource` page.
 
 Add the `CommentsAction` to the `getHeaderActions()` method.
 
