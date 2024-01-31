@@ -10,6 +10,7 @@ return [
      * The icons that are used in the comments component.
      */
     'icons' => [
+        'action' => 'heroicon-s-chat-bubble-left-right',
         'delete' => 'heroicon-s-trash',
         'empty' => 'heroicon-s-chat-bubble-left-right',
     ],

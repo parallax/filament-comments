@@ -20,7 +20,7 @@ class CommentsAction extends Action
         parent::setUp();
 
         $this
-            ->icon('heroicon-s-chat-bubble-left-right')
+            ->icon(config('filament-comments.icons.action'))
             ->label(__('filament-comments::filament-comments.comments'))
             ->slideOver()
             ->modalContentFooter(fn (Model $record): View => view('filament-comments::component', [

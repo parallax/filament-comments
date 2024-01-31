@@ -20,7 +20,7 @@ class CommentsAction extends Action
 
         $this
             ->hiddenLabel()
-            ->icon('heroicon-s-chat-bubble-left-right')
+            ->icon(config('filament-comments.icons.action'))
             ->color('gray')
             ->badge($this->record->filamentComments()->count())
             ->slideOver()
