@@ -196,6 +196,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Credits
 
 - [Parallax](https://parall.ax)
+- [Contributors](https://github.com/parallax/filament-comments/graphs/contributors)
 
 ## License
 
