@@ -157,6 +157,38 @@ return [
 ];
 ```
 
+## Pruning deleted comments
+
+Comment records are set to be pruned after 30 days of being soft-deleted by default. You may change this value in the config file:
+
+```php
+return [
+    'prune_after_days' => 30,
+];
+```
+
+After configuring the model, you should schedule the `model:prune` Artisan command in your application's `Kernel` class. Don't forget to explicitly mention the `FilamentComment` class. You are free to choose the appropriate interval at which this command should be run:
+
+```php
+namespace App\Console;
+
+use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Parallax\FilamentComments\Models\FilamentComment;
+
+class Kernel extends ConsoleKernel
+{
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('model:prune', [
+            '--model' => [FilamentComment::class],
+        ])->daily();
+    
+        // This will not work, as models in a package are not used by default
+        // $schedule->command('model:prune')->daily();
+    }
+}
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
