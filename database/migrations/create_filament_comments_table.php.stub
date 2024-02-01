@@ -11,8 +11,7 @@ return new class extends Migration
         Schema::create('filament_comments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('subject_type');
-            $table->unsignedBigInteger('subject_id');
+            $table->morphs('subject');
             $table->longText('comment');
             $table->timestamps();
             $table->softDeletes();
