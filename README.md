@@ -7,8 +7,6 @@
 
 Add comments to your Filament Resources.
 
-![logo](https://github.com/parallax/filament-comments/raw/main/assets/filament-comments.jpg)
-
 <img class="filament-hidden" src="https://github.com/parallax/filament-comments/raw/main/assets/filament-comments.jpg"/>
 
 ## Installation
