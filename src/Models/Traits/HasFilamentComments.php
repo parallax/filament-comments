@@ -11,7 +11,7 @@ trait HasFilamentComments
     {
         return $this
             ->hasMany(FilamentComment::class, 'subject_id')
-            ->where('subject_type', static::class)
+            ->where('subject_type', $this->getMorphClass())
             ->latest();
     }
 }
