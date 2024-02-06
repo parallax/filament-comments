@@ -23,9 +23,9 @@ class FilamentComment extends Model
 
     public function user(): BelongsTo
     {
-        $authenticatable = app(Authenticatable::class);
+        $authenticatable = config('filament-comments.authenticatable');
 
-        return $this->belongsTo($authenticatable::class, 'user_id');
+        return $this->belongsTo($authenticatable, 'user_id');
     }
 
     public function subject(): BelongsTo

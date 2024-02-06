@@ -48,4 +48,9 @@ return [
      * The attribute used to display the user's name.
      */
     'user_name_attribute' => 'name',
+
+    /*
+     * Authenticatable model class
+     */
+    'authenticatable' => \App\Models\User::class,
 ];
