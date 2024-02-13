@@ -85,6 +85,7 @@ class FilamentCommentsServiceProvider extends PackageServiceProvider
     {
         return [
             'create_filament_comments_table',
+            'add_index_to_subject',
         ];
     }
 }
