@@ -189,6 +189,15 @@ class Kernel extends ConsoleKernel
 }
 ```
 
+## Events
+
+This package fires several events during its lifecycle:
+
+- `CommentPosted`: Fired after a new comment is posted. The event object contains the comment instance.
+- `CommentDeleted`: Fired after a comment is deleted. The event object contains the comment instance.
+
+You can listen to these events in your application and define your own listeners to perform custom actions when these events occur.
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.

@@ -10,6 +10,8 @@ use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
+use Parallax\FilamentComments\Events\CommentDeleted;
+use Parallax\FilamentComments\Events\CommentPosted;
 use Parallax\FilamentComments\Models\FilamentComment;
 
 class CommentsComponent extends Component implements HasForms
@@ -53,11 +55,13 @@ class CommentsComponent extends Component implements HasForms
 
         $data = $this->form->getState();
 
-        $this->record->filamentComments()->create([
+        $comment = $this->record->filamentComments()->create([
             'subject_type' => $this->record->getMorphClass(),
             'comment' => $data['comment'],
             'user_id' => auth()->id(),
         ]);
+
+        event(new CommentPosted($comment));
 
         Notification::make()
             ->title(__('filament-comments::filament-comments.notifications.created'))
@@ -79,7 +83,12 @@ class CommentsComponent extends Component implements HasForms
             return;
         }
 
+        // Make a copy of the comment or relevant data before deletion
+        $commentCopy = clone $comment;
+
         $comment->delete();
+
+        event(new CommentDeleted($commentCopy));
 
         Notification::make()
             ->title(__('filament-comments::filament-comments.notifications.deleted'))
