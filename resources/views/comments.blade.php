@@ -1,5 +1,6 @@
+@php use Illuminate\Support\Str; @endphp
 <div class="flex flex-col h-full space-y-4">
-    @if (auth()->user()->can('create', \Parallax\FilamentComments\Models\FilamentComment::class))
+    @if (auth()->user()->can('create', \Parallax\FilamentComments\Models\FilamentComment::class) && $this->getConfig()['show_form'] ?? true)
         <div class="space-y-4">
             {{ $this->form }}
             
