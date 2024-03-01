@@ -53,4 +53,10 @@ return [
      * Authenticatable model class
      */
     'authenticatable' => \App\Models\User::class,
+
+
+    /*
+     * The name of the table where the comments are stored.
+     */
+    'table_name' => 'filament_comments',
 ];

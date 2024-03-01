@@ -20,6 +20,17 @@ class FilamentComment extends Model
         'comment',
     ];
 
+    public function __construct(array $attributes = [])
+    {
+        $config = Config::get('filament-comments');
+
+        if (isset($config['table_name'])) {
+            $this->setTable($config['table_name']);
+        }
+
+        parent::__construct($attributes);
+    }
+
     public function user(): BelongsTo
     {
         $authenticatable = config('filament-comments.authenticatable');
