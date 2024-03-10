@@ -14,7 +14,7 @@ class CommentPosted
     /**
      * Create a new event instance.
      */
-    public function __construct(FilamentComment $comment)
+    public function __construct(public FilamentComment $comment)
     {
     }
 }
