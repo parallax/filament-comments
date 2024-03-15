@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('filament_comments', function (Blueprint $table) {
+        Schema::create(config('filament-comments.table_name', 'filament_comments'), function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('subject_type');
@@ -21,6 +21,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('filament_comments');
+        Schema::dropIfExists(config('filament-comments.table_name', 'filament_comments'));
     }
 };

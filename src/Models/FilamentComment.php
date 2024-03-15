@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Config;
 
 class FilamentComment extends Model
 {
@@ -19,6 +20,17 @@ class FilamentComment extends Model
         'subject_id',
         'comment',
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        $config = Config::get('filament-comments');
+
+        if (isset($config['table_name'])) {
+            $this->setTable($config['table_name']);
+        }
+
+        parent::__construct($attributes);
+    }
 
     public function user(): BelongsTo
     {
