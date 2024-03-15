@@ -7,9 +7,12 @@ use Filament\Support\Enums\MaxWidth;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
 use Parallax\FilamentComments\Models\FilamentComment;
+use Parallax\FilamentComments\Models\Traits\HasFilamentComments;
 
 class CommentsAction extends Action
 {
+    use HasFilamentComments;
+
     public static function getDefaultName(): ?string
     {
         return 'comments';

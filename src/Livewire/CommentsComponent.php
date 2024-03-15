@@ -11,10 +11,13 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Parallax\FilamentComments\Models\FilamentComment;
+use Parallax\FilamentComments\Models\Traits\HasCommentsConfig;
+use Parallax\FilamentComments\Models\Traits\HasFilamentComments;
 
 class CommentsComponent extends Component implements HasForms
 {
     use InteractsWithForms;
+    use HasCommentsConfig;
 
     public ?array $data = [];
 
