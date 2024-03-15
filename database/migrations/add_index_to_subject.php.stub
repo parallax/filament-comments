@@ -8,14 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('filament_comments', function (Blueprint $table) {
+        Schema::table(config('filament-comments.table_name', 'filament_comments'), function (Blueprint $table) {
             $table->index(['subject_type', 'subject_id']);
         });
     }
 
     public function down(): void
     {
-        Schema::table('filament_comments', function (Blueprint $table) {
+        Schema::table(config('filament-comments.table_name', 'filament_comments'), function (Blueprint $table) {
             $table->dropIndex(['subject_type', 'subject_id']);
         });
     }
