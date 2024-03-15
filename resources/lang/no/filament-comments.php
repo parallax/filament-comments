@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'comments' => 'Kommentarer'
+    'comments' => 'Kommentarer',
     'comments.add' => 'Publiser kommentar',
     'comments.empty' => 'Ingen kommentarer enda.',
     'comments.placeholder' => 'Skriv en kommentar...',
