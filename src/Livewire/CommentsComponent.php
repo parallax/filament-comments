@@ -89,7 +89,7 @@ class CommentsComponent extends Component implements HasForms
 
     public function render(): View
     {
-        $comments = $this->record->filamentComments()->latest()->get();
+        $comments = $this->record->filamentComments()->with(['user'])->latest()->get();
 
         return view('filament-comments::comments', ['comments' => $comments]);
     }
