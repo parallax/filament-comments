@@ -15,6 +15,12 @@ return [
         'empty' => 'heroicon-s-chat-bubble-left-right',
     ],
 
+
+    /*
+     * The comment model to be used
+     */
+    'comment_model' => \Parallax\FilamentComments\Models\FilamentComment::class,
+
     /*
      * The policy that will be used to authorize actions against comments.
      */
