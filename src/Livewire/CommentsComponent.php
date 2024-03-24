@@ -31,14 +31,24 @@ class CommentsComponent extends Component implements HasForms
             return $form;
         }
 
+        if (config('filament-comments.editor') === 'markdown') {
+            $editor = Forms\Components\MarkdownEditor::make('comment')
+                ->hiddenLabel()
+                ->required()
+                ->placeholder(__('filament-comments::filament-comments.comments.placeholder'))
+                ->toolbarButtons(config('filament-comments.toolbar_buttons'));
+        } else {
+            $editor = Forms\Components\RichEditor::make('comment')
+                ->hiddenLabel()
+                ->required()
+                ->placeholder(__('filament-comments::filament-comments.comments.placeholder'))
+                ->extraInputAttributes(['style' => 'min-height: 6rem'])
+                ->toolbarButtons(config('filament-comments.toolbar_buttons'));
+        }
+
         return $form
             ->schema([
-                Forms\Components\RichEditor::make('comment')
-                    ->hiddenLabel()
-                    ->required()
-                    ->placeholder(__('filament-comments::filament-comments.comments.placeholder'))
-                    ->extraInputAttributes(['style' => 'min-height: 6rem'])
-                    ->toolbarButtons(config('filament-comments.toolbar_buttons'))
+                $editor,
             ])
             ->statePath('data');
     }
