@@ -16,14 +16,14 @@
         <x-filament::grid class="gap-4">
             @foreach ($comments as $comment)
                 <div class="fi-in-repeatable-item block rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-950/5 dark:bg-white/5 dark:ring-white/10">
-                    <div class="flex space-x-3">
+                    <div class="flex gap-x-3">
                         @if (config('filament-comments.display_avatars'))
                             <x-filament-panels::avatar.user size="md" :user="$comment->user" />
                         @endif
 
                         <div class="flex-grow space-y-2 pt-[6px]">
-                            <div class="flex space-x-2 items-center justify-between">
-                                <div class="flex space-x-2 items-center">
+                            <div class="flex gap-x-2 items-center justify-between">
+                                <div class="flex gap-x-2 items-center">
                                     <div class="text-sm font-medium text-gray-950 dark:text-white">
                                         {{ $comment->user[config('filament-comments.user_name_attribute')] }}
                                     </div>
