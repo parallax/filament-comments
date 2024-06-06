@@ -33,6 +33,12 @@ return [
      */
     'prune_after_days' => 30,
 
+
+    /*
+     * Options: 'rich', 'markdown'
+     */
+    'editor' => 'rich',
+
     /*
      * The rich editor toolbar buttons that are available to users.
      */
