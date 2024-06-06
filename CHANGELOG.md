@@ -2,6 +2,10 @@
 
 All notable changes to `filament-comments` will be documented in this file.
 
+# 1.3.1 - June 6, 2024
+
+- Fixes missing closing bracket
+
 # 1.3.0 - June 6, 2024
 
 - Adds Persian translations 🇮🇷 (Credit [@amiralidev](https://github.com/amiralidev))
