@@ -2,6 +2,13 @@
 
 All notable changes to `filament-comments` will be documented in this file.
 
+# 1.3.0 - June 6, 2024
+
+- Adds Persian translations 🇮🇷 (Credit [@amiralidev](https://github.com/amiralidev))
+- Adds ability to define custom comment model class (Credit [@ziming](https://github.com/ziming))
+- Adds markdown editor support (Credit [@ziming](https://github.com/ziming))
+- Eager loads comment user (Credit [@ziming](https://github.com/ziming))
+
 # 1.2.0 - Mar 15, 2024
 
 - Adds German transations 🇩🇪 (Credit [@dissto](https://github.com/dissto))
