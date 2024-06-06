@@ -55,7 +55,7 @@ class FilamentCommentsServiceProvider extends PackageServiceProvider
     {
         Livewire::component('comments', CommentsComponent::class);
 
-        Gate::policy(FilamentComment::class, config('filament-comments.model_policy', FilamentCommentPolicy::class));
+        Gate::policy(config('filament-comments.comment_model'), config('filament-comments.model_policy', FilamentCommentPolicy::class));
 
         FilamentAsset::register(
             $this->getAssets(),
