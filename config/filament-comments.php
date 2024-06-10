@@ -33,7 +33,6 @@ return [
      */
     'prune_after_days' => 30,
 
-
     /*
      * Options: 'rich', 'markdown'
      */
@@ -66,9 +65,15 @@ return [
      */
     'authenticatable' => \App\Models\User::class,
 
-
     /*
      * The name of the table where the comments are stored.
      */
     'table_name' => 'filament_comments',
+
+    /*
+     * Automatically open the comment slideover when at least
+     * one comment is attached. Useful if you dont want comments
+     * to be overlooked accidetally:
+     */
+    'auto_open' => false,
 ];
