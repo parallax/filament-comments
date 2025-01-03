@@ -2,6 +2,12 @@
 
 All notable changes to `filament-comments` will be documented in this file.
 
+# 1.4.0 - January 3, 2025
+
+- Dependency upgrades
+- Adds French translations 🇫🇷 (Credit [@agencetwogether](https://github.com/agencetwogether))
+- Adds "Delete comment" translation (Credit [@maxime9446](https://github.com/maxime9446))
+
 # 1.3.1 - June 6, 2024
 
 - Fixes missing closing bracket
