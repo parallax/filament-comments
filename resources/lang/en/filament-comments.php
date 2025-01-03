@@ -10,4 +10,6 @@ return [
     'notifications.deleted' => 'Comment deleted.',
 
     'modal.heading' => 'Comments',
+
+    'comments.delete.tooltip' => 'Delete comment'
 ];
