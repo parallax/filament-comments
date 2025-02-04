@@ -39,7 +39,7 @@
                                             wire:click="delete({{ $comment->id }})"
                                             icon="{{ config('filament-comments.icons.delete') }}"
                                             color="danger"
-                                            tooltip={{ __('filament-comments::filament-comments.comments.delete.tooltip') }}
+                                            tooltip="{{ __('filament-comments::filament-comments.comments.delete.tooltip') }}"
                                         />
                                     </div>
                                 @endif
