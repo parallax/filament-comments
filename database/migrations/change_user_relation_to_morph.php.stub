@@ -1,0 +1,26 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::table(config('filament-comments.table_name', 'filament_comments'), function (Blueprint $table) {
+            $table->string('user_type')->after('id')->default(str_replace('\\', '\\\\', config('filament-comments.authenticatable', 'filament_comments')));
+
+            $table->index(['user_type', 'user_id']);
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table(config('filament-comments.table_name', 'filament_comments'), function (Blueprint $table) {
+            $table->dropIndex(['user_type', 'user_id']);
+
+            $table->dropColumn('user_type');
+        });
+    }
+};
