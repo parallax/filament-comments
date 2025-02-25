@@ -43,6 +43,7 @@ return [
      * The rich editor toolbar buttons that are available to users.
      */
     'toolbar_buttons' => [
+        'attachFiles',
         'blockquote',
         'bold',
         'bulletList',
@@ -55,6 +56,13 @@ return [
         'underline',
         'undo',
     ],
+
+    /*
+     * The disk on which editor uploads are stored, needs 'attachFiles' to be added to 'toolbar_buttons'.
+     */
+    'editor_disk' => 'public',
+    'editor_directory' => 'comments',
+    'editor_visibility' => 'public',
 
     /*
      * Allow user to select other users to be notified via Filament database notifications.

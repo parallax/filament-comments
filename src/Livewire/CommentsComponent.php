@@ -53,14 +53,20 @@ class CommentsComponent extends Component implements HasForms
                 ->hiddenLabel()
                 ->required()
                 ->placeholder(__('filament-comments::filament-comments.comments.placeholder'))
-                ->toolbarButtons(config('filament-comments.toolbar_buttons'));
+                ->toolbarButtons(config('filament-comments.toolbar_buttons'))
+                ->fileAttachmentsDisk(config('filament-comments.editor_disk'))
+                ->fileAttachmentsDirectory(config('filament-comments.editor_directory'))
+                ->fileAttachmentsVisibility(config('filament-comments.editor_visibility'));
         } else {
             $schema[] = Forms\Components\RichEditor::make('comment')
                 ->hiddenLabel()
                 ->required()
                 ->placeholder(__('filament-comments::filament-comments.comments.placeholder'))
                 ->extraInputAttributes(['style' => 'min-height: 6rem'])
-                ->toolbarButtons(config('filament-comments.toolbar_buttons'));
+                ->toolbarButtons(config('filament-comments.toolbar_buttons'))
+                ->fileAttachmentsDisk(config('filament-comments.editor_disk'))
+                ->fileAttachmentsDirectory(config('filament-comments.editor_directory'))
+                ->fileAttachmentsVisibility(config('filament-comments.editor_visibility'));
         }
 
         return $form
