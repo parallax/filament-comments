@@ -12,7 +12,6 @@ use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
-use Parallax\FilamentComments\Models\FilamentComment;
 
 class CommentsComponent extends Component implements HasForms
 {
@@ -120,7 +119,7 @@ class CommentsComponent extends Component implements HasForms
 
     public function delete(int $id): void
     {
-        $comment = FilamentComment::find($id);
+        $comment = config('filament-comments.comment_model')::find($id);
 
         if (!$comment) {
             return;

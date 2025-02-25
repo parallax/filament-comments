@@ -5,15 +5,12 @@ namespace Parallax\FilamentComments;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Parallax\FilamentComments\Livewire\CommentsComponent;
-use Parallax\FilamentComments\Models\FilamentComment;
-use Parallax\FilamentComments\Policies\FilamentCommentPolicy;
 
 class FilamentCommentsServiceProvider extends PackageServiceProvider
 {
@@ -55,7 +52,7 @@ class FilamentCommentsServiceProvider extends PackageServiceProvider
     {
         Livewire::component('comments', CommentsComponent::class);
 
-        Gate::policy(config('filament-comments.comment_model'), config('filament-comments.model_policy', FilamentCommentPolicy::class));
+        Gate::policy(config('filament-comments.comment_model'), config('filament-comments.model_policy'));
 
         FilamentAsset::register(
             $this->getAssets(),

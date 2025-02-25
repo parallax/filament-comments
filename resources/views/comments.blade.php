@@ -1,5 +1,5 @@
 <div class="flex flex-col h-full space-y-4">
-    @if (auth()->user()->can('create', \Parallax\FilamentComments\Models\FilamentComment::class))
+    @if (auth()->user()->can('create', config('filament-comments.comment_model')))
         <div class="space-y-4">
             {{ $this->form }}
 

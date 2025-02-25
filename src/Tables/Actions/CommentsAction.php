@@ -6,7 +6,6 @@ use Filament\Tables\Actions\Action;
 use Filament\Support\Enums\MaxWidth;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
-use Parallax\FilamentComments\Models\FilamentComment;
 
 class CommentsAction extends Action
 {
