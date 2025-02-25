@@ -57,6 +57,11 @@ return [
     ],
 
     /*
+     * Allow user to select other users to be notified via Filament database notifications.
+     */
+    'notify_users' => true,
+
+    /*
      * The attribute used to display the user's name.
      */
     'user_name_attribute' => 'name',

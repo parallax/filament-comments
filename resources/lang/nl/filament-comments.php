@@ -10,4 +10,8 @@ return [
     'notifications.deleted' => 'Reactie verwijderd.',
 
     'modal.heading' => 'Reacties',
+
+    'notify_users.placeholder' => 'Selecteer gebruikers om op de hoogte te stellen...',
+    'notify_users.notification_title' => 'Nieuwe reactie van :user',
+    'notify_users.notification_action' => 'Bekijk record',
 ];

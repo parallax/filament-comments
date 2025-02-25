@@ -10,4 +10,8 @@ return [
     'notifications.deleted' => 'Коментар видалено.',
 
     'modal.heading' => 'Коментарі',
+
+    'notify_users.placeholder' => 'Виберіть користувачів для сповіщення...',
+    'notify_users.notification_title' => 'Новий коментар від :user',
+    'notify_users.notification_action' => 'Переглянути запис',
 ];

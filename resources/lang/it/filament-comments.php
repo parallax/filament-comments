@@ -10,4 +10,8 @@ return [
     'notifications.deleted' => 'Commento cancellato.',
 
     'modal.heading' => 'Commenti',
+
+    'notify_users.placeholder' => 'Seleziona utenti da notificare...',
+    'notify_users.notification_title' => 'Nuovo commento da :user',
+    'notify_users.notification_action' => 'Visualizza record',
 ];

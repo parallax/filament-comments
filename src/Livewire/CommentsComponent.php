@@ -2,10 +2,12 @@
 
 namespace Parallax\FilamentComments\Livewire;
 
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
+use Filament\Notifications\Actions\Action;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
@@ -31,14 +33,29 @@ class CommentsComponent extends Component implements HasForms
             return $form;
         }
 
+        $schema = [];
+
+        if (config('filament-comments.notify_users')) {
+            $users = config('filament-comments.authenticatable')::query()
+                ->where('id', '!=', auth()->id())
+                ->pluck(config('filament-comments.user_name_attribute'), 'id');
+            $schema[] = Forms\Components\Select::make('users_to_notify')
+                ->hiddenLabel()
+                ->placeholder(__('filament-comments::filament-comments.notify_users.placeholder'))
+                ->options($users)
+                ->multiple()
+                ->searchable()
+                ->preload();
+        }
+
         if (config('filament-comments.editor') === 'markdown') {
-            $editor = Forms\Components\MarkdownEditor::make('comment')
+            $schema[] = Forms\Components\MarkdownEditor::make('comment')
                 ->hiddenLabel()
                 ->required()
                 ->placeholder(__('filament-comments::filament-comments.comments.placeholder'))
                 ->toolbarButtons(config('filament-comments.toolbar_buttons'));
         } else {
-            $editor = Forms\Components\RichEditor::make('comment')
+            $schema[] = Forms\Components\RichEditor::make('comment')
                 ->hiddenLabel()
                 ->required()
                 ->placeholder(__('filament-comments::filament-comments.comments.placeholder'))
@@ -47,9 +64,7 @@ class CommentsComponent extends Component implements HasForms
         }
 
         return $form
-            ->schema([
-                $editor,
-            ])
+            ->schema($schema)
             ->statePath('data');
     }
 
@@ -73,6 +88,26 @@ class CommentsComponent extends Component implements HasForms
             ->title(__('filament-comments::filament-comments.notifications.created'))
             ->success()
             ->send();
+
+        if (config('filament-comments.notify_users')) {
+            $title = __('filament-comments::filament-comments.notify_users.notification_title', [
+                'user' => auth()->user()[config('filament-comments.user_name_attribute')]
+            ]);
+            $viewAction = Action::make('view')
+                ->label(__('filament-comments::filament-comments.notify_users.notification_action'))
+                ->url(Filament::getResourceUrl($this->record, 'view'))
+                ->color('info')
+                ->close();
+            Notification::make()
+                ->title($title)
+                ->body($data['comment'])
+                ->icon(config('filament-comments.icons.action'))
+                ->iconColor('info')
+                ->actions([
+                    $viewAction,
+                ])
+                ->sendToDatabase(config('filament-comments.authenticatable')::find($data['users_to_notify']));
+        }
 
         $this->form->fill();
     }
