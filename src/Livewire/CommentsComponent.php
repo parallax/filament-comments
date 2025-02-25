@@ -36,8 +36,8 @@ class CommentsComponent extends Component implements HasForms
 
         if (config('filament-comments.notify_users')) {
             $users = config('filament-comments.authenticatable')::query()
-                ->where('id', '!=', auth()->id())
-                ->pluck(config('filament-comments.user_name_attribute'), 'id');
+                ->where(auth()->user()->getKeyName(), '!=', auth()->id())
+                ->pluck(config('filament-comments.user_name_attribute'), auth()->user()->getKeyName());
             $schema[] = Forms\Components\Select::make('users_to_notify')
                 ->hiddenLabel()
                 ->placeholder(__('filament-comments::filament-comments.notify_users.placeholder'))
