@@ -11,6 +11,8 @@ return [
 
     'modal.heading' => 'Comentários',
 
+    'comments.delete.tooltip' => 'Deletar comentário',
+
     'notify_users.placeholder' => 'Selecione usuários para notificar...',
     'notify_users.notification_title' => 'Novo comentário de :user',
     'notify_users.notification_action' => 'Ver registro',

@@ -11,6 +11,8 @@ return [
 
     'modal.heading' => 'Kommentare',
 
+    'comments.delete.tooltip' => 'Kommentar löschen',
+
     'notify_users.placeholder' => 'Benutzer auswählen, die benachrichtigt werden sollen...',
     'notify_users.notification_title' => 'Neuer Kommentar von :user',
     'notify_users.notification_action' => 'Datensatz anzeigen',

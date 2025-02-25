@@ -11,6 +11,8 @@ return [
 
     'modal.heading' => 'Commenti',
 
+    'comments.delete.tooltip' => 'Cancella commento',
+
     'notify_users.placeholder' => 'Seleziona utenti da notificare...',
     'notify_users.notification_title' => 'Nuovo commento da :user',
     'notify_users.notification_action' => 'Visualizza record',

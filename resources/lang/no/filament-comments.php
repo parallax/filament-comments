@@ -11,6 +11,8 @@ return [
 
     'modal.heading' => 'Kommentarer',
 
+    'comments.delete.tooltip' => 'Slett kommentar',
+
     'notify_users.placeholder' => 'Velg brukere som skal varsles...',
     'notify_users.notification_title' => 'Ny kommentar fra :user',
     'notify_users.notification_action' => 'Se post',
