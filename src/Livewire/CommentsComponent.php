@@ -100,8 +100,9 @@ class CommentsComponent extends Component implements HasForms
             ]);
             $viewAction = Action::make('view')
                 ->label(__('filament-comments::filament-comments.notify_users.notification_action'))
-                ->url(Filament::getResourceUrl($this->record, 'view'))
                 ->color('info')
+                ->url(Filament::getResourceUrl($this->record, 'view', ['action' => 'comments']))
+                ->dispatch('close-modal', ['id' => 'database-notifications'])
                 ->close();
             Notification::make()
                 ->title($title)
