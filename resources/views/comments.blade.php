@@ -1,8 +1,8 @@
 <div class="flex flex-col h-full space-y-4">
-    @if (auth()->user()->can('create', \Parallax\FilamentComments\Models\FilamentComment::class))
+    @if (auth()->user()->can('create', config('filament-comments.comment_model')))
         <div class="space-y-4">
             {{ $this->form }}
-            
+
             <x-filament::button
                 wire:click="create"
                 color="primary"
@@ -47,9 +47,9 @@
 
                             <div class="prose dark:prose-invert [&>*]:mb-2 [&>*]:mt-0 [&>*:last-child]:mb-0 prose-sm text-sm leading-6 text-gray-950 dark:text-white">
                                 @if(config('filament-comments.editor') === 'markdown')
-                                    {{ Str::of($comment->comment)->markdown()->toHtmlString() }}
+                                    {{ Str::of($comment->comment)->markdown()->sanitizeHtml()->toHtmlString() }}
                                 @else
-                                    {{ Str::of($comment->comment)->toHtmlString() }}
+                                    {{ Str::of($comment->comment)->sanitizeHtml()->toHtmlString() }}
                                 @endif
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                 icon="{{ config('filament-comments.icons.empty') }}"
                 class="h-12 w-12 text-gray-400 dark:text-gray-500"
             />
-            
+
             <div class="text-sm text-gray-400 dark:text-gray-500">
                 {{ __('filament-comments::filament-comments.comments.empty') }}
             </div>

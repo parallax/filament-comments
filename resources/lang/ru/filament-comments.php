@@ -10,4 +10,10 @@ return [
     'notifications.deleted' => 'Комментарий удален.',
 
     'modal.heading' => 'Комментарии',
+
+    'comments.delete.tooltip' => 'Удалить комментарий',
+
+    'notify_users.placeholder' => 'Выберите пользователей для уведомления...',
+    'notify_users.notification_title' => 'Новый комментарий от :user',
+    'notify_users.notification_action' => 'Просмотреть запись',
 ];

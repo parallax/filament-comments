@@ -10,4 +10,10 @@ return [
     'notifications.deleted' => 'Commentaire supprimé.',
 
     'modal.heading' => 'Commentaires',
+
+    'comments.delete.tooltip' => 'Supprimer le commentaire',
+
+    'notify_users.placeholder' => 'Sélectionner les utilisateurs à notifier...',
+    'notify_users.notification_title' => 'Nouveau commentaire de :user',
+    'notify_users.notification_action' => 'Voir l\'enregistrement',
 ];

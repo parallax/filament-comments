@@ -11,5 +11,9 @@ return [
 
     'modal.heading' => 'Comments',
 
-    'comments.delete.tooltip' => 'Delete comment'
+    'comments.delete.tooltip' => 'Delete comment',
+
+    'notify_users.placeholder' => 'Select users to notify...',
+    'notify_users.notification_title' => 'New comment from :user',
+    'notify_users.notification_action' => 'View record',
 ];
