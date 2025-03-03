@@ -17,4 +17,9 @@ return [
     'comments.cancel' => 'Cancel',
 
     'read' => 'Read',
+
+    'notifications' => [
+        'new_comment' => 'New comment on :model #:id',
+        'view_record' => 'View Record',
+    ],
 ];

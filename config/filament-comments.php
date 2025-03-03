@@ -71,4 +71,10 @@ return [
      * The name of the table where the comments are stored.
      */
     'table_name' => 'filament_comments',
+
+    /*
+     * Callback to generate the URL for viewing a record.
+     * Should return a closure that takes a Model and returns a URL string.
+     */
+    'record_url' => null,
 ];
