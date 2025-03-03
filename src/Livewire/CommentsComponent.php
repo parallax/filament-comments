@@ -20,6 +20,8 @@ class CommentsComponent extends Component implements HasForms
 
     public Model $record;
 
+    public ?int $replyToId = null;
+
     public function mount(): void
     {
         $this->form->fill();
@@ -53,6 +55,12 @@ class CommentsComponent extends Component implements HasForms
             ->statePath('data');
     }
 
+    public function startReply(int $commentId): void
+    {
+        $this->replyToId = $commentId;
+        $this->form->fill();
+    }
+
     public function create(): void
     {
         if (!auth()->user()->can('create', config('filament-comments.comment_model'))) {
@@ -67,7 +75,10 @@ class CommentsComponent extends Component implements HasForms
             'subject_type' => $this->record->getMorphClass(),
             'comment' => $data['comment'],
             'user_id' => auth()->id(),
+            'parent_id' => $this->replyToId,
         ]);
+
+        $this->replyToId = null;
 
         Notification::make()
             ->title(__('filament-comments::filament-comments.notifications.created'))
@@ -99,7 +110,11 @@ class CommentsComponent extends Component implements HasForms
 
     public function render(): View
     {
-        $comments = $this->record->filamentComments()->with(['user'])->latest()->get();
+        $comments = $this->record->filamentComments()
+            ->with(['user', 'replies.user'])
+            ->whereNull('parent_id')
+            ->latest()
+            ->get();
 
         return view('filament-comments::comments', ['comments' => $comments]);
     }

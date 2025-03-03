@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Config;
 
@@ -49,5 +50,15 @@ class FilamentComment extends Model
         $days = config('filament-comments.prune_after_days');
 
         return static::onlyTrashed()->where('created_at', '<=', now()->subDays($days));
+    }
+
+    public function replies(): HasMany
+    {
+        return $this->hasMany(config('filament-comments.comment_model'), 'parent_id');
+    }
+
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(config('filament-comments.comment_model'), 'parent_id');
     }
 }
