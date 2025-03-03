@@ -9,8 +9,8 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Livewire\Component;
+use Parallax\FilamentComments\Events\CommentCreated;
 use Parallax\FilamentComments\Models\FilamentComment;
 use Parallax\FilamentComments\Models\FilamentCommentRead;
 
@@ -102,8 +102,7 @@ class CommentsComponent extends Component implements HasForms
 
         $this->replyToId = null;
 
-        // Notify other users about the new comment
-        $this->notifyOtherUsers($comment);
+        event(new CommentCreated($comment, $this->record));
 
         Notification::make()
             ->title(__('filament-comments::filament-comments.notifications.created'))
@@ -111,39 +110,6 @@ class CommentsComponent extends Component implements HasForms
             ->send();
 
         $this->form->fill();
-    }
-
-    protected function notifyOtherUsers(FilamentComment $comment): void
-    {
-        // Get all users who have commented on this record except the current user
-        $userIds = $this->record->filamentComments()
-            ->where('user_id', '!=', auth()->id())
-            ->pluck('user_id')
-            ->unique();
-
-        $authenticatableModel = config('filament-comments.authenticatable');
-        $users = $authenticatableModel::whereIn('id', $userIds)->get();
-
-        $urlCallback = config('filament-comments.record_url');
-
-        foreach ($users as $user) {
-            Notification::make()
-                ->title(__('filament-comments::filament-comments.notifications.new_comment', [
-                    'model' => class_basename($this->record),
-                    'id' => $this->record->id
-                ]))
-                ->body($comment->user->{config('filament-comments.user_name_attribute')}.' commented: '.Str::limit($comment->comment,
-                        100))
-                ->when($urlCallback && is_callable($urlCallback),
-                    fn(Notification $notification) => $notification->actions([
-                        \Filament\Notifications\Actions\Action::make('view')
-                            ->label(__('filament-comments::filament-comments.notifications.view_record'))
-                            ->url($urlCallback($this->record))
-                            ->markAsRead()
-                    ])
-                )
-                ->sendToDatabase($user);
-        }
     }
 
     public function delete(int $id): void
