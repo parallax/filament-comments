@@ -29,7 +29,7 @@
         <x-filament::grid class="gap-4">
             @foreach ($comments as $comment)
                 <div
-                    class="flex space-x-3 {{ $comment->isReadByUser($userId) ? 'bg-gray-50' : 'bg-white' }} p-4 rounded-lg">
+                    class="flex gap-x-3 {{ $comment->isReadByUser($userId) ? 'bg-gray-50 dark:bg-gray-800' : 'bg-white dark:bg-gray-900' }} p-4 rounded-lg">
                     <div class="flex-shrink-0">
                         @if (config('filament-comments.display_avatars'))
                             <x-filament-panels::avatar.user size="md" :user="$comment->user" />
@@ -37,7 +37,7 @@
                     </div>
                     <div class="flex-grow">
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-2">
+                            <div class="flex items-center gap-2">
                                 <div class="text-sm font-medium text-gray-950 dark:text-white">
                                     {{ $comment->user[config('filament-comments.user_name_attribute')] }}
                                 </div>
@@ -46,7 +46,7 @@
                                 </div>
                                 @if ($comment->isReadByUser($userId))
                                     <span
-                                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                                        class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
                                         {{ __('filament-comments::filament-comments.read') }}
                                     </span>
                                 @endif
@@ -83,10 +83,10 @@
                         </div>
 
                         @if($comment->replies->count() > 0)
-                            <div class="mt-4 space-y-4 pl-6 border-l-2 border-gray-100 dark:border-gray-800">
+                            <div class="mt-4 space-y-4 pl-6 border-l-2 border-gray-100 dark:border-gray-700">
                                 @foreach($comment->replies as $reply)
                                     <div
-                                        class="flex space-x-3 {{ $reply->isReadByUser($userId) ? 'bg-gray-50' : 'bg-white' }} p-3 rounded-lg">
+                                        class="flex gap-x-3 {{ $reply->isReadByUser($userId) ? 'bg-gray-50 dark:bg-gray-800' : 'bg-white dark:bg-gray-900' }} p-3 rounded-lg">
                                         <div class="flex-shrink-0">
                                             @if (config('filament-comments.display_avatars'))
                                                 <x-filament-panels::avatar.user size="sm" :user="$reply->user" />
@@ -94,7 +94,7 @@
                                         </div>
                                         <div class="flex-grow">
                                             <div class="flex items-center justify-between">
-                                                <div class="flex items-center space-x-2">
+                                                <div class="flex items-center gap-2">
                                                     <div class="text-sm font-medium text-gray-950 dark:text-white">
                                                         {{ $reply->user[config('filament-comments.user_name_attribute')] }}
                                                     </div>
@@ -103,7 +103,7 @@
                                                     </div>
                                                     @if ($reply->isReadByUser($userId))
                                                         <span
-                                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
                                                             {{ __('filament-comments::filament-comments.read') }}
                                                         </span>
                                                     @endif
