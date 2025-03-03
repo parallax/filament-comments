@@ -14,5 +14,7 @@ return [
     'comments.delete.tooltip' => 'Delete comment',
     'comments.reply' => 'Reply',
     'comments.replying' => 'Replying to comment...',
-    'comments.cancel' => 'Cancel'
+    'comments.cancel' => 'Cancel',
+
+    'read' => 'Read',
 ];

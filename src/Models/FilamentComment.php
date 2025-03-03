@@ -62,4 +62,18 @@ class FilamentComment extends Model
     {
         return $this->belongsTo(config('filament-comments.comment_model'), 'parent_id');
     }
+
+    public function reads(): HasMany
+    {
+        return $this->hasMany(FilamentCommentRead::class, 'comment_id');
+    }
+
+    public function isReadByUser(?int $userId = null): bool
+    {
+        if (!$userId) {
+            $userId = auth()->id();
+        }
+
+        return $this->reads()->where('user_id', $userId)->exists();
+    }
 }

@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Parallax\FilamentComments\Models\FilamentComment;
+use Parallax\FilamentComments\Models\FilamentCommentRead;
 
 class CommentsComponent extends Component implements HasForms
 {
@@ -25,6 +26,26 @@ class CommentsComponent extends Component implements HasForms
     public function mount(): void
     {
         $this->form->fill();
+        $this->markCommentsAsRead();
+    }
+
+    protected function markCommentsAsRead(): void
+    {
+        $userId = auth()->id();
+        $otherUsersComments = $this->record->filamentComments()
+            ->where('user_id', '!=', $userId)
+            ->get();
+
+        if ($otherUsersComments->isNotEmpty()) {
+            $otherUsersComments->each(function (FilamentComment $comment) use ($userId) {
+                FilamentCommentRead::firstOrCreate([
+                    'comment_id' => $comment->id,
+                    'user_id' => $userId,
+                ], [
+                    'read_at' => now(),
+                ]);
+            });
+        }
     }
 
     public function form(Form $form): Form
@@ -111,11 +132,14 @@ class CommentsComponent extends Component implements HasForms
     public function render(): View
     {
         $comments = $this->record->filamentComments()
-            ->with(['user', 'replies.user'])
+            ->with(['user', 'replies.user', 'reads'])
             ->whereNull('parent_id')
             ->latest()
             ->get();
 
-        return view('filament-comments::comments', ['comments' => $comments]);
+        return view('filament-comments::comments', [
+            'comments' => $comments,
+            'userId' => auth()->id(),
+        ]);
     }
 }

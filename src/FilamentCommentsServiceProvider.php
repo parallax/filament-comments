@@ -84,7 +84,8 @@ class FilamentCommentsServiceProvider extends PackageServiceProvider
         return [
             'create_filament_comments_table',
             'add_index_to_subject',
-            'add_parent_id_to_filament_comments_table'
+            'add_parent_id_to_filament_comments_table',
+            'create_filament_comment_reads_table'
         ];
     }
 }
