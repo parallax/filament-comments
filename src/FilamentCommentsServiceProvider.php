@@ -5,15 +5,13 @@ namespace Parallax\FilamentComments;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Livewire;
+use Parallax\FilamentComments\Livewire\CommentsComponent;
+use Parallax\FilamentComments\Policies\FilamentCommentPolicy;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Parallax\FilamentComments\Livewire\CommentsComponent;
-use Parallax\FilamentComments\Models\FilamentComment;
-use Parallax\FilamentComments\Policies\FilamentCommentPolicy;
 
 class FilamentCommentsServiceProvider extends PackageServiceProvider
 {
@@ -86,6 +84,7 @@ class FilamentCommentsServiceProvider extends PackageServiceProvider
         return [
             'create_filament_comments_table',
             'add_index_to_subject',
+            'add_parent_id_to_filament_comments_table'
         ];
     }
 }

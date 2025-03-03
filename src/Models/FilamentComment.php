@@ -17,6 +17,7 @@ class FilamentComment extends Model
 
     protected $fillable = [
         'user_id',
+        'parent_id',
         'subject_type',
         'subject_id',
         'comment',
