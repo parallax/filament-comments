@@ -5,7 +5,6 @@ namespace Parallax\FilamentComments\Actions;
 use Filament\Actions\Action;
 use Filament\Support\Enums\MaxWidth;
 use Illuminate\Contracts\View\View;
-use Parallax\FilamentComments\Models\FilamentComment;
 
 class CommentsAction extends Action
 {
@@ -22,7 +21,7 @@ class CommentsAction extends Action
             ->hiddenLabel()
             ->icon(config('filament-comments.icons.action'))
             ->color('gray')
-            ->badge($this->record->filamentComments()->count())
+            ->badge(fn() => $this->getUnreadCommentsCount())
             ->slideOver()
             ->modalContentFooter(fn (): View => view('filament-comments::component'))
             ->modalHeading(__('filament-comments::filament-comments.modal.heading'))
@@ -30,5 +29,15 @@ class CommentsAction extends Action
             ->modalSubmitAction(false)
             ->modalCancelAction(false)
             ->visible(fn (): bool => auth()->user()->can('viewAny', config('filament-comments.comment_model')));
+    }
+
+    protected function getUnreadCommentsCount(): int
+    {
+        return $this->record->filamentComments()
+            ->whereDoesntHave('reads', function ($query) {
+                $query->where('user_id', auth()->id());
+            })
+            ->where('user_id', '!=', auth()->id())
+            ->count();
     }
 }
