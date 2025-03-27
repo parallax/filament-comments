@@ -2,6 +2,13 @@
 
 All notable changes to `filament-comments` will be documented in this file.
 
+# 1.5.0 - March 27, 2025
+
+- Adds Laravel 12 support (Credit [@CodeWithDennis](https://github.com/CodeWithDennis))
+- Adds Arabic translations (Credit [@majdghithan](https://github.com/majdghithan))
+- Adds French tooltip translation (Credit [@agencetwogether](https://github.com/agencetwogether))
+- Fix "Call to a member function filamentComments() on null" (Credit [@teodino93](https://github.com/teodino93))
+
 # 1.4.0 - January 3, 2025
 
 - Dependency upgrades
