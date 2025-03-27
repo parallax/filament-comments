@@ -2,6 +2,10 @@
 
 All notable changes to `filament-comments` will be documented in this file.
 
+# 1.5.1 - March 27, 2025
+
+- Fixes comment count in action
+
 # 1.5.0 - March 27, 2025
 
 - Adds Laravel 12 support (Credit [@CodeWithDennis](https://github.com/CodeWithDennis))
