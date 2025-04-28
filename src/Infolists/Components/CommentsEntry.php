@@ -13,6 +13,6 @@ class CommentsEntry extends Entry
     {
         parent::setUp();
 
-        $this->visible(fn (): bool => auth()->user()->can('viewAny', config('filament-comments.comment_model')));
+        $this->visible(fn (): bool => auth()->user()?->can('viewAny', config('filament-comments.comment_model')) ?? false);
     }
 }

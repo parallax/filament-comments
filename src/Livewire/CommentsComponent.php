@@ -27,7 +27,7 @@ class CommentsComponent extends Component implements HasForms
 
     public function form(Form $form): Form
     {
-        if (!auth()->user()->can('create', config('filament-comments.comment_model'))) {
+        if (!auth()->user()?->can('create', config('filament-comments.comment_model'))) {
             return $form;
         }
 
@@ -55,7 +55,7 @@ class CommentsComponent extends Component implements HasForms
 
     public function create(): void
     {
-        if (!auth()->user()->can('create', config('filament-comments.comment_model'))) {
+        if (!auth()->user()?->can('create', config('filament-comments.comment_model'))) {
             return;
         }
 
@@ -85,7 +85,7 @@ class CommentsComponent extends Component implements HasForms
             return;
         }
 
-        if (!auth()->user()->can('delete', $comment)) {
+        if (!auth()->user()?->can('delete', $comment)) {
             return;
         }
 

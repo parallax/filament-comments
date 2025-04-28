@@ -30,6 +30,6 @@ class CommentsAction extends Action
             ->modalWidth(MaxWidth::Medium)
             ->modalSubmitAction(false)
             ->modalCancelAction(false)
-            ->visible(fn (): bool => auth()->user()->can('viewAny', config('filament-comments.comment_model')));
+            ->visible(fn (): bool => auth()->user()?->can('viewAny', config('filament-comments.comment_model')) ?? false);
     }
 }
