@@ -1,5 +1,5 @@
 <div class="flex flex-col h-full space-y-4">
-    @if (auth()->user()->can('create', \Parallax\FilamentComments\Models\FilamentComment::class))
+    @if (auth()->user()?->can('create', \Parallax\FilamentComments\Models\FilamentComment::class))
         <div class="space-y-4">
             {{ $this->form }}
             
@@ -33,7 +33,7 @@
                                     </div>
                                 </div>
 
-                                @if (auth()->user()->can('delete', $comment))
+                                @if (auth()->user()?->can('delete', $comment))
                                     <div class="flex-shrink-0">
                                         <x-filament::icon-button
                                             wire:click="delete({{ $comment->id }})"
