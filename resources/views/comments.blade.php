@@ -13,7 +13,7 @@
     @endif
 
     @if (count($comments))
-        <div class="gap-4">
+        <div class="gap-4 space-y-4">
             @foreach ($comments as $comment)
                 <div class="fi-in-repeatable-item block rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-950/5 dark:bg-white/5 dark:ring-white/10">
                     <div class="flex gap-x-3">
