@@ -42,6 +42,16 @@ Optionally, you can publish the views using
 php artisan vendor:publish --tag="filament-comments-views"
 ```
 
+### Integrate Tailwind classes
+
+Filament recommends creating a custom theme to properly support a plugin's additional Tailwind classes. This prevents the plugin from overwriting Filament's default styling.
+
+After you have created your [custom theme](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme), add:
+
+```css
+@source '../../../../vendor/parallax/filament-comments/resources/**/*';
+```
+
 ## Quickstart
 
 ### 1. Add model trait

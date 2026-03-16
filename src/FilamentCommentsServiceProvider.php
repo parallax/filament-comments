@@ -2,10 +2,6 @@
 
 namespace Parallax\FilamentComments;
 
-use Filament\Support\Assets\Asset;
-use Filament\Support\Assets\Css;
-use Filament\Support\Facades\FilamentAsset;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
@@ -56,26 +52,6 @@ class FilamentCommentsServiceProvider extends PackageServiceProvider
         Livewire::component('comments', CommentsComponent::class);
 
         Gate::policy(config('filament-comments.comment_model'), config('filament-comments.model_policy', FilamentCommentPolicy::class));
-
-        FilamentAsset::register(
-            $this->getAssets(),
-            $this->getAssetPackageName()
-        );
-    }
-
-    protected function getAssetPackageName(): ?string
-    {
-        return 'parallax/filament-comments';
-    }
-
-    /**
-     * @return array<Asset>
-     */
-    protected function getAssets(): array
-    {
-        return [
-            Css::make('filament-comments', __DIR__ . '/../resources/dist/filament-comments.css'),
-        ];
     }
 
     /**
