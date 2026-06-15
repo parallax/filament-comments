@@ -4,22 +4,21 @@ namespace Parallax\FilamentComments\Livewire;
 
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
-use Filament\Schemas\Schema;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
+use Filament\Schemas\Schema;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Parallax\FilamentComments\Models\FilamentComment;
 
-class CommentsComponent extends Component implements HasForms, HasActions
+class CommentsComponent extends Component implements HasActions, HasForms
 {
-    use InteractsWithForms;
     use InteractsWithActions;
+    use InteractsWithForms;
 
     public ?array $data = [];
 
@@ -27,12 +26,14 @@ class CommentsComponent extends Component implements HasForms, HasActions
 
     public function mount(): void
     {
+        $this->resetErrorBag();
+
         $this->form->fill();
     }
 
     public function form(Schema $schema): Schema
     {
-        if (!auth()->user()->can('create', config('filament-comments.comment_model'))) {
+        if (! auth()->user()->can('create', config('filament-comments.comment_model'))) {
             return $schema;
         }
 
@@ -60,7 +61,7 @@ class CommentsComponent extends Component implements HasForms, HasActions
 
     public function create(): void
     {
-        if (!auth()->user()->can('create', config('filament-comments.comment_model'))) {
+        if (! auth()->user()->can('create', config('filament-comments.comment_model'))) {
             return;
         }
 
@@ -86,11 +87,11 @@ class CommentsComponent extends Component implements HasForms, HasActions
     {
         $comment = FilamentComment::find($id);
 
-        if (!$comment) {
+        if (! $comment) {
             return;
         }
 
-        if (!auth()->user()->can('delete', $comment)) {
+        if (! auth()->user()->can('delete', $comment)) {
             return;
         }
 
