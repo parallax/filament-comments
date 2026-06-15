@@ -11,5 +11,5 @@ return [
 
     'modal.heading' => 'التعليقات',
 
-    'comments.delete.tooltip' => 'حذف التعليق'
+    'comments.delete.tooltip' => 'حذف التعليق',
 ];

@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\User;
+use Parallax\FilamentComments\Models\FilamentComment;
+use Parallax\FilamentComments\Policies\FilamentCommentPolicy;
+
 return [
     /*
      * Whether or not user avatars should be displayed next to comments.
@@ -15,16 +19,15 @@ return [
         'empty' => 'heroicon-s-chat-bubble-left-right',
     ],
 
-
     /*
      * The comment model to be used
      */
-    'comment_model' => \Parallax\FilamentComments\Models\FilamentComment::class,
+    'comment_model' => FilamentComment::class,
 
     /*
      * The policy that will be used to authorize actions against comments.
      */
-    'model_policy' => \Parallax\FilamentComments\Policies\FilamentCommentPolicy::class,
+    'model_policy' => FilamentCommentPolicy::class,
 
     /*
      * The number of days after which soft-deleted comments should be deleted.
@@ -32,7 +35,6 @@ return [
      * Set to null if no comments should be deleted.
      */
     'prune_after_days' => 30,
-
 
     /*
      * Options: 'rich', 'markdown'
@@ -64,8 +66,7 @@ return [
     /*
      * Authenticatable model class
      */
-    'authenticatable' => \App\Models\User::class,
-
+    'authenticatable' => User::class,
 
     /*
      * The name of the table where the comments are stored.
