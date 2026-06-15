@@ -2,6 +2,8 @@
 
 namespace Parallax\FilamentComments\Livewire;
 
+use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Actions\Contracts\HasActions;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\RichEditor;
@@ -14,9 +16,10 @@ use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 use Parallax\FilamentComments\Models\FilamentComment;
 
-class CommentsComponent extends Component implements HasForms
+class CommentsComponent extends Component implements HasForms, HasActions
 {
     use InteractsWithForms;
+    use InteractsWithActions;
 
     public ?array $data = [];
 
