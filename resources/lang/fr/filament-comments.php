@@ -11,5 +11,5 @@ return [
 
     'modal.heading' => 'Commentaires',
 
-    'comments.delete.tooltip' => 'Supprimer le commentaire'
+    'comments.delete.tooltip' => 'Supprimer le commentaire',
 ];
