@@ -2,6 +2,10 @@
 
 All notable changes to `filament-comments` will be documented in this file.
 
+# 3.0.0 - June 16th 2026
+- Adds Filament 5 support (Credit [@matalaweb](https://github.com/matalaweb))
+- Fixes Counter (Credit [@AlexanderGabriel](https://github.com/AlexanderGabriel))
+
 # 2.0.0 - August 29, 2025
 - Adds Filament 4 support (Credit [@matalaweb](https://github.com/matalaweb))
 
