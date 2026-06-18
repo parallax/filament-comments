@@ -29,6 +29,10 @@ class FilamentComment extends Model
             $this->setTable($config['table_name']);
         }
 
+        if(!empty($config['connection_name'])) {
+            $this->setConnection($config['connection_name']);
+        }
+
         parent::__construct($attributes);
     }
 

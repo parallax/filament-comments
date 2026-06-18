@@ -71,4 +71,10 @@ return [
      * The name of the table where the comments are stored.
      */
     'table_name' => 'filament_comments',
+
+    /*
+     * If the name of your database connection is not the default, you may provide it here.
+     * In the published migration, add the connection to table creation with: `Schema::connection('your_connection_name')->create(...)` as usual. 
+     */
+    // 'connection_name' => '',
 ];
