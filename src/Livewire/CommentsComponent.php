@@ -72,6 +72,7 @@ class CommentsComponent extends Component implements HasForms, HasActions
             'subject_type' => $this->record->getMorphClass(),
             'comment' => $data['comment'],
             'user_id' => auth()->id(),
+            'user_type' => auth()->user()->getMorphClass(),
         ]);
 
         Notification::make()
